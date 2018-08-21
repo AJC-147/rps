@@ -11,18 +11,29 @@
 
     <div id="game">
         <h1>Rock, Paper, Scissors!</h1>
-        <h3>User Guess: </h3>
+<!--        <h3>User Guess: </h3>-->
         <p id="user"></p>
-        <h3>Computer Guess: </h3>
+<!--        <h3>Computer Guess: </h3>-->
         <p id="computer"></p>
-        <h3>Result: </h3>
+<!--        <h3>Result: </h3>-->
         <p id="result"></p>
+        
+    <hr>    
+        
+<h4>Results</h4>
+    User Wins: <p id="uwins"></p>
+    Computer Wins: <p id="cwins"></p>
+    Ties: <p id="ties"></p>
 
     </div>
 
     <script type="text/javascript">
         // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
         var computerChoices = ["r", "p", "s"];
+        
+        var userwin = 0;
+        var compwin = 0;
+        var tie = 0;
 
         // This function is run whenever the user presses a key.
         document.onkeydown = function(event) {
@@ -38,20 +49,20 @@ console.log(userGuess)
                 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
 
-                //            function fullWord(x) {
-                //                if (userGuess = "r") {
-                //                    var userGuess = "Rock"
-                //                    console.log(userGuess)
-                //                } else if (userGuess = "s") {
-                //                    var userGuess = "Scissors"
-                //                    console.log(userGuess)
-                //                } else if (userGuess = "p") {
-                //                    var userGuess = "Paper"
-                //                    console.log(userGuess)
-                //                }
-                //
-                //
-                //            }
+//                            function fullWord(x) {
+//                                if (userGuess = "r") {
+//                                    var userGuess = "Rock"
+//                                    console.log(userGuess)
+//                                } else if (userGuess = "s") {
+//                                    var userGuess = "Scissors"
+//                                    console.log(userGuess)
+//                                } else if (userGuess = "p") {
+//                                    var userGuess = "Paper"
+//                                    console.log(userGuess)
+//                                }
+//                
+//                
+//                            }
 
                 // Alerts the key the user pressed (userGuess).
                 document.getElementById("user").innerHTML = ("User guess: " + userGuess);
@@ -62,23 +73,37 @@ console.log(userGuess)
 
                 if (userGuess === "r" && computerGuess === "s") {
                     document.getElementById("result").innerHTML = ("User wins");
+                    userwin++;
                 } else if (userGuess === "r" && computerGuess === "p") {
                     document.getElementById("result").innerHTML = ("Computer wins");
+                    compwin++;
                 } else if (userGuess === "r" && computerGuess === "r") {
                     document.getElementById("result").innerHTML = ("Tie");
+                    tie++;
                 } else if (userGuess === "s" && computerGuess === "s") {
                     document.getElementById("result").innerHTML = ("Tie");
+                    tie++;
                 } else if (userGuess === "s" && computerGuess === "p") {
                     document.getElementById("result").innerHTML = ("User wins");
+                    userwin++;
                 } else if (userGuess === "s" && computerGuess === "r") {
                     document.getElementById("result").innerHTML = ("Computer Wins");
+                    compwin++;
                 } else if (userGuess === "p" && computerGuess === "s") {
                     document.getElementById("result").innerHTML = ("Computer Wins");
+                    compwin++;
                 } else if (userGuess === "p" && computerGuess === "p") {
                     document.getElementById("result").innerHTML = ("Tie");
+                    tie++;
                 } else if (userGuess === "p" && computerGuess === "r") {
                     document.getElementById("result").innerHTML = ("User wins");
+                    userwin++;
                 }
+                
+                // Results
+                document.getElementById("uwins").innerHTML = (userwin);
+                document.getElementById("cwins").innerHTML = (compwin);
+                document.getElementById("ties").innerHTML = (tie);
 
             }
             
